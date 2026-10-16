@@ -1,0 +1,2 @@
+# For the model-only smoke test, PyTorch is enough.
+torch>=2.2.0
