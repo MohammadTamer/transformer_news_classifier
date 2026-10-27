@@ -447,10 +447,13 @@ def run_full_training_and_evaluation_pipeline(args):
         f"Valid={len(valid_split)}, Test={len(test_split)}"
     )
 
-    vocab = build_vocabulary_from_texts(
-        (str(row["text"]) for row in train_split),
-        max_vocab_size=args.max_vocab_size
-    )
+    texts = []
+
+    for row in train_split:
+        text = str(row["text"])
+        texts.append(text)
+
+    vocab = build_vocabulary_from_texts(texts, max_vocab_size=args.max_vocab_size)
 
     train_data = prepare_encoded_news_dataset(train_split, vocab, args.max_len)
     valid_data = prepare_encoded_news_dataset(valid_split, vocab, args.max_len)
