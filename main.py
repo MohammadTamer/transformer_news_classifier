@@ -436,11 +436,7 @@ def run_full_training_and_evaluation_pipeline(args):
     checkpoint_dir.mkdir(parents=True, exist_ok=True)
     results_dir.mkdir(parents=True, exist_ok=True)
 
-    train_split, valid_split, test_split = download_and_split_ag_news_dataset(
-        args.max_train_samples,
-        args.max_test_samples,
-        args.seed
-    )
+    train_split, valid_split, test_split = download_and_split_ag_news_dataset(args.max_train_samples, args.max_test_samples, args.seed)
 
     print(
         f"Train={len(train_split)}, "
